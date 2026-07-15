@@ -1,0 +1,18 @@
+2026-07-15 12:40:08 - OK - Serviço nginx ativo
+2026-07-15 12:40:08 - OK - Serviço php8.1-fpm ativo
+2026-07-15 12:40:08 - OK - Aplicação respondeu em http://localhost/status.php
+2026-07-15 12:45:01 - OK - Serviço nginx ativo
+2026-07-15 12:45:01 - OK - Serviço php8.1-fpm ativo
+2026-07-15 12:45:01 - OK - Aplicação respondeu em http://localhost/status.php
+2026-07-15 12:50:01 - OK - Serviço nginx ativo
+2026-07-15 12:50:01 - OK - Serviço php8.1-fpm ativo
+2026-07-15 12:50:01 - OK - Aplicação respondeu em http://localhost/status.php
+2026-07-15 12:55:01 - OK - Serviço nginx ativo
+2026-07-15 12:55:01 - OK - Serviço php8.1-fpm ativo
+2026-07-15 12:55:01 - OK - Aplicação respondeu em http://localhost/status.php
+2026-07-15 13:00:01 - OK - Serviço nginx ativo
+2026-07-15 13:00:01 - OK - Serviço php8.1-fpm ativo
+2026-07-15 13:00:01 - OK - Aplicação respondeu em http://localhost/status.php
+2026-07-15 13:05:01 - OK - Serviço nginx ativo
+2026-07-15 13:05:01 - OK - Serviço php8.1-fpm ativo
+2026-07-15 13:05:01 - OK - Aplicação respondeu em http://localhost/status.php
