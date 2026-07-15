@@ -125,9 +125,11 @@ Comando utilizado:
 ```bash
 ./check_email_dns.sh google.com
 ```
+A figura abaixo mostra a execução do script durante os testes.
 
-Resultado da execução:
+![Execução do script](evidencias/evidencia-google.png)
 
-- Print: `evidencias/evidencia-google.png`
-- Saída do terminal: `evidencias/evidencia-google.txt`
+Também foi salva a saída da execução em:
+
+- `evidencias/evidencia-google.txt`
 
