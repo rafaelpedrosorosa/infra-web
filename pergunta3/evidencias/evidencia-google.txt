@@ -1,0 +1,25 @@
+========================================
+Verificação de e-mail para: google.com
+========================================
+
+1. SPF
+[OK] SPF encontrado:
+"v=spf1 include:_spf.google.com ~all"
+
+2. DKIM
+[AVISO] DKIM não encontrado com o seletor default.
+O domínio pode utilizar outro seletor.
+
+3. DMARC
+[OK] DMARC encontrado:
+"v=DMARC1; p=reject; rua=mailto:mailauth-reports@google.com"
+
+4. PTR / DNS reverso
+IP encontrado: 172.217.172.46
+[OK] PTR encontrado:
+pngrub-an-in-f14.1e100.net.
+eze06s05-in-f14.1e100.net.
+
+========================================
+Verificação concluída.
+========================================
