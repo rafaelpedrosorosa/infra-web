@@ -214,56 +214,22 @@ O registro permaneceu disponível, demonstrando que o volume Docker preservou os
 
 ## Evidências
 
-### 1. Docker Compose validado
+Durante a implementação foram realizados os seguintes testes:
 
-Executado:
-
-```bash
-docker compose config
-```
-
----
-
-### 2. Containers em execução
-
-Executado:
-
-```bash
-docker compose ps
-```
-
-Resultado demonstrando:
-
-- MariaDB saudável;
-- PHP-FPM em execução;
-- Nginx em execução.
-
----
-
-### 3. Aplicação PHP respondendo
-
-Validação realizada através de:
-
-```bash
-curl -I http://localhost:8080
-```
-
-e da página `phpinfo()`.
-
----
-
-### 4. Persistência do volume Docker
-
-A figura abaixo demonstra:
-
-- criação dos containers;
-- criação do volume;
-- inserção de dados no MariaDB;
+- validação do arquivo `docker-compose.yml`;
+- criação do ambiente com `docker compose up -d`;
+- verificação dos containers em execução;
+- confirmação do estado **healthy** do MariaDB;
+- criação de uma tabela de teste;
+- inserção de dados no banco;
 - remoção dos containers utilizando `docker compose down`;
+- verificação da permanência do volume Docker;
 - recriação do ambiente;
-- confirmação de que os dados permaneceram armazenados no volume Docker.
+- confirmação de que os dados permaneceram armazenados no volume persistente.
 
-![Persistência do volume Docker](evidencias/04-persistencia-volume.png)
+A figura abaixo apresenta todo o fluxo de validação realizado durante os testes em laboratório.
+
+![Validação do Docker Compose e persistência do MariaDB](evidencias/04-persistencia-volume.png)
 
 ---
 
