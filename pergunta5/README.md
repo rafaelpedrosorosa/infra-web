@@ -108,7 +108,7 @@ Inclui:
 Para simplificação do ambiente de testes:
 
 - Ubuntu Server 22.04;
-- Puppet 7;
+- Puppet;
 - Nginx instalado localmente;
 - Nginx utilizado como servidor web e validado durante a execução prática;
 - LiteSpeed entregue como implementação parametrizada por meio de classes e templates do módulo, mas não instalado nem executado no laboratório, pois depende de repositório e configuração próprios;
