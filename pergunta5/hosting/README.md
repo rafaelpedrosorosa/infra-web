@@ -15,7 +15,6 @@ hosting/
 ├── examples/
 ├── manifests/
 ├── templates/
-├── files/
 ├── metadata.json
 └── README.md
 ```
@@ -31,7 +30,7 @@ O módulo foi dividido em responsabilidades independentes.
 | stack.pp | Instala e configura a stack compartilhada |
 | user.pp | Cria usuário, grupo e estrutura de diretórios |
 | wordpress.pp | Instala WordPress, gera wp-config.php e instala LSCache |
-| vhost.pp | Gera Virtual Hosts do Nginx e LiteSpeed |
+| vhost.pp | Gera o Virtual Host do Nginx e, opcionalmente, a configuração parametrizada do LiteSpeed |
 | client.pp | Orquestra todo o provisionamento do cliente |
 
 ---
@@ -70,7 +69,7 @@ Gera o Virtual Host do Nginx responsável pela camada de borda.
 
 ### litespeed-vhost.conf.epp
 
-Modelo de Virtual Host do LiteSpeed.
+Modelo parametrizado para geração do Virtual Host do LiteSpeed. Essa implementação foi incluída no módulo, mas não executada no laboratório, pois a instalação do LiteSpeed depende de repositório e configuração próprios.
 
 ### wp-config.php.epp
 
@@ -92,14 +91,17 @@ class { 'hosting::stack':
 }
 
 hosting::client { 'cliente1':
-  domain            => 'cliente1.test'
-  system_user       => 'cliente1'
-  backend_port      => 8101
-  db_name           => 'cliente1_wp'
-  db_user           => 'cliente1_wp'
-  db_password       => 'senha'
-  manage_litespeed  => false
+  domain            => 'cliente1.test',
+  system_user       => 'cliente1',
+  backend_port      => 8101,
+  db_name           => 'cliente1_wp',
+  db_user           => 'cliente1_wp',
+  db_password       => 'senha',
+  manage_litespeed  => false,
 }
+
+No exemplo validado no laboratório, `manage_litespeed` permanece definido como `false`. Dessa forma, o provisionamento utiliza o Nginx, enquanto a implementação do LiteSpeed fica disponível de maneira opcional e parametrizada.
+
 ```
 
 O diretório `examples/` contém um exemplo completo de provisionamento.
@@ -121,12 +123,15 @@ Downloads, extrações, criação de diretórios, geração de arquivos e demais
 Durante o laboratório foram realizadas as seguintes validações:
 
 - provisionamento de novos clientes;
-- reaplicação do catálogo;
-- criação da estrutura isolada;
-- geração dos Virtual Hosts;
-- validação do Nginx;
+- reaplicação do catálogo e verificação da idempotência;
+- criação da estrutura isolada de diretórios;
+- geração dos Virtual Hosts do Nginx;
+- validação da configuração do Nginx;
 - instalação do WordPress;
-- instalação do LSCache.
+- instalação do plugin LSCache;
+- habilitação do cache por meio da constante `WP_CACHE`.
+
+A implementação parametrizada do LiteSpeed foi entregue nas classes e templates do módulo, mas não foi executada no laboratório, pois depende de repositório e configuração próprios.
 
 ![Provisionamento e idempotência](evidencias/01-provisionamento-idempotencia.png)
 
@@ -153,4 +158,6 @@ Em um ambiente real de hospedagem seriam adicionados recursos como:
 
 # Considerações
 
-O foco desta implementação foi demonstrar a estrutura do módulo Puppet, separação de responsabilidades, parametrização, reutilização e idempotência, conforme solicitado no desafio técnico.
+O foco desta implementação foi demonstrar a estrutura do módulo Puppet, a separação de responsabilidades, a parametrização, a reutilização e a idempotência, conforme solicitado no desafio técnico.
+
+O provisionamento com Nginx foi executado e validado no laboratório. O suporte ao LiteSpeed foi entregue como implementação opcional e parametrizada, mas não executado neste ambiente por depender de repositório e configuração próprios.

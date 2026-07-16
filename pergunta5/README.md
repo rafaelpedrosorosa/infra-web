@@ -6,7 +6,7 @@ Esta questão implementa um módulo Puppet responsável pelo provisionamento aut
 
 O objetivo foi demonstrar uma abordagem baseada em Infrastructure as Code (IaC), utilizando recursos declarativos, parametrização, templates e idempotência.
 
-O módulo recebe como parâmetros os dados do cliente (domínio, usuário, banco de dados, porta do backend, etc.) e realiza o provisionamento completo do ambiente.
+O módulo recebe como parâmetros os dados do cliente (domínio, usuário, banco de dados, porta do backend etc.) e realiza o provisionamento automatizado do ambiente. No laboratório, o provisionamento foi executado e validado com Nginx; o suporte ao LiteSpeed foi entregue como implementação parametrizada, sem execução prática por depender de repositório e configuração próprios.
 
 ---
 
@@ -110,7 +110,8 @@ Para simplificação do ambiente de testes:
 - Ubuntu Server 22.04;
 - Puppet 7;
 - Nginx instalado localmente;
-- LiteSpeed representado através dos templates e parametrização do módulo;
+- Nginx utilizado como servidor web e validado durante a execução prática;
+- LiteSpeed entregue como implementação parametrizada por meio de classes e templates do módulo, mas não instalado nem executado no laboratório, pois depende de repositório e configuração próprios;
 - WordPress e plugin LSCache obtidos diretamente dos repositórios oficiais.
 
 Em produção seria utilizada uma integração completa com OpenLiteSpeed/LiteSpeed Enterprise, banco de dados provisionado automaticamente, certificados TLS, isolamento adicional entre clientes e integração com DNS e automação de hospedagem.
