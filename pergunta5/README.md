@@ -79,8 +79,6 @@ sudo puppet apply \
   hosting/examples/provision_client.pp
 ```
 
----
-
 ## Evidências
 
 ### Figura 1 — Provisionamento e idempotência
@@ -103,7 +101,6 @@ Inclui:
 
 ![Validação do ambiente](hosting/evidencias/02-validacao-ambiente.png)
 
-```
 ---
 
 ## Premissas do laboratório
