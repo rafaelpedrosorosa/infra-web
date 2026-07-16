@@ -1,0 +1,91 @@
+<%- |
+  String  $domain,
+  String  $document_root,
+  String  $system_user,
+  Integer $backend_port,
+  String  $access_log,
+  String  $error_log,
+| -%>
+# Arquivo gerenciado pelo Puppet.
+# Virtual host LiteSpeed do cliente <%= $domain %>.
+
+docRoot                   <%= $document_root %>/
+vhDomain                  <%= $domain %>
+vhAliases                 www.<%= $domain %>
+adminEmails               hosting@<%= $domain %>
+enableGzip                1
+enableIpGeo               0
+
+errorlog <%= $error_log %> {
+  useServer               0
+  logLevel                WARN
+  rollingSize             10M
+  keepDays                7
+}
+
+accesslog <%= $access_log %> {
+  useServer               0
+  logFormat               "%h %l %u %t \"%r\" %>s %b"
+  rollingSize             10M
+  keepDays                7
+  compressArchive         1
+}
+
+index {
+  useServer               0
+  indexFiles              index.php, index.html
+}
+
+scriptHandler {
+  add                     lsapi:<%= $system_user %>-lsphp php
+}
+
+extprocessor <%= $system_user %>-lsphp {
+  type                    lsapi
+  address                 uds://tmp/lshttpd/<%= $system_user %>.sock
+  maxConns                10
+  env                     PHP_LSAPI_CHILDREN=10
+  env                     LSAPI_AVOID_FORK=200M
+  initTimeout             60
+  retryTimeout            0
+  persistConn             1
+  respBuffer              0
+  autoStart               1
+  path                    /usr/local/lsws/lsphp81/bin/lsphp
+  backlog                 100
+  instances               1
+  extUser                 <%= $system_user %>
+  extGroup                <%= $system_user %>
+  runOnStartUp            3
+  priority                0
+  memSoftLimit            2047M
+  memHardLimit            2047M
+  procSoftLimit           400
+  procHardLimit           500
+}
+
+rewrite {
+  enable                  1
+  autoLoadHtaccess        1
+}
+
+cache {
+  enableCache             1
+  storagePath             /var/cache/litespeed/<%= $system_user %>
+  checkPublicCache        1
+  checkPrivateCache       1
+  maxCacheObjSize         10000000
+  maxStaleAge             200
+  qsCache                 1
+  reqCookieCache          1
+  respCookieCache         1
+  ignoreReqCacheCtrl      1
+  ignoreRespCacheCtrl     0
+}
+
+listener <%= $system_user %>-listener {
+  address                 127.0.0.1:<%= $backend_port %>
+  secure                  0
+
+  map                     <%= $domain %> <%= $domain %>
+}

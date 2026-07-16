@@ -1,0 +1,25 @@
+{
+  "name": "rafaelpedrosorosa-hosting",
+  "version": "0.1.0",
+  "author": "Rafael Pedroso Rosa",
+  "summary": "Provisionamento automatizado de clientes em ambiente de hospedagem compartilhada",
+  "license": "MIT",
+  "source": "https://github.com/rafaelpedrosorosa/infra-web",
+  "project_page": "https://github.com/rafaelpedrosorosa/infra-web",
+  "issues_url": "https://github.com/rafaelpedrosorosa/infra-web/issues",
+  "dependencies": [],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "22.04"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 7.0.0 < 9.0.0"
+    }
+  ]
+}

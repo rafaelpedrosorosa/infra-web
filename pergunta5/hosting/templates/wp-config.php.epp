@@ -1,0 +1,43 @@
+<%- |
+  String $db_name,
+  String $db_user,
+  String $db_password,
+  String $db_host,
+  String $domain,
+| -%>
+<?php
+/**
+ * Arquivo gerenciado pelo Puppet.
+ * Alterações manuais poderão ser sobrescritas.
+ */
+
+define('DB_NAME', '<%= $db_name %>');
+define('DB_USER', '<%= $db_user %>');
+define('DB_PASSWORD', '<%= $db_password %>');
+define('DB_HOST', '<%= $db_host %>');
+define('DB_CHARSET', 'utf8mb4');
+define('DB_COLLATE', '');
+
+define('WP_HOME', 'http://<%= $domain %>');
+define('WP_SITEURL', 'http://<%= $domain %>');
+
+define('WP_CACHE', true);
+define('DISALLOW_FILE_EDIT', true);
+define('FS_METHOD', 'direct');
+
+$table_prefix = 'wp_';
+
+define('AUTH_KEY',         'substituir-por-secret-em-producao');
+define('SECURE_AUTH_KEY',  'substituir-por-secret-em-producao');
+define('LOGGED_IN_KEY',    'substituir-por-secret-em-producao');
+define('NONCE_KEY',        'substituir-por-secret-em-producao');
+define('AUTH_SALT',        'substituir-por-secret-em-producao');
+define('SECURE_AUTH_SALT', 'substituir-por-secret-em-producao');
+define('LOGGED_IN_SALT',   'substituir-por-secret-em-producao');
+define('NONCE_SALT',       'substituir-por-secret-em-producao');
+
+if (!defined('ABSPATH')) {
+    define('ABSPATH', __DIR__ . '/');
+}
+
+require_once ABSPATH . 'wp-settings.php';
