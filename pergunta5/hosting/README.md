@@ -99,10 +99,9 @@ hosting::client { 'cliente1':
   db_password       => 'senha',
   manage_litespeed  => false,
 }
+```
 
 No exemplo validado no laboratório, `manage_litespeed` permanece definido como `false`. Dessa forma, o provisionamento utiliza o Nginx, enquanto a implementação do LiteSpeed fica disponível de maneira opcional e parametrizada.
-
-```
 
 O diretório `examples/` contém um exemplo completo de provisionamento.
 
