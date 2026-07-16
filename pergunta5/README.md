@@ -83,17 +83,13 @@ sudo puppet apply \
 
 ## Evidências
 
-Foram geradas evidências práticas durante o laboratório.
-
-### Figura 1
+### Figura 1 — Provisionamento e idempotência
 
 Provisionamento de um novo cliente e reaplicação do catálogo demonstrando idempotência.
 
-```
-hosting/evidencias/01-provisionamento-idempotencia.png
-```
+![Provisionamento e idempotência](hosting/evidencias/01-provisionamento-idempotencia.png)
 
-### Figura 2
+### Figura 2 — Validação do ambiente
 
 Validação do ambiente provisionado.
 
@@ -101,14 +97,13 @@ Inclui:
 
 - estrutura de diretórios;
 - usuários criados;
-- Virtual Hosts;
+- virtual hosts;
 - validação do Nginx;
 - recursos provisionados.
 
-```
-hosting/evidencias/02-validacao-ambiente.png
-```
+![Validação do ambiente](hosting/evidencias/02-validacao-ambiente.png)
 
+```
 ---
 
 ## Premissas do laboratório
