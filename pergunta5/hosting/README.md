@@ -128,12 +128,9 @@ Durante o laboratório foram realizadas as seguintes validações:
 - instalação do WordPress;
 - instalação do LSCache.
 
-```
 ![Provisionamento e idempotência](evidencias/01-provisionamento-idempotencia.png)
 
 ![Validação do ambiente](evidencias/02-validacao-ambiente.png)
-
-```
 
 ---
 
