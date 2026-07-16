@@ -1,0 +1,49 @@
+services:
+  nginx:
+    image: nginx:1.28-alpine
+    container_name: pergunta4-nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./php:/var/www/html:ro
+    depends_on:
+      - php
+    restart: unless-stopped
+
+  php:
+    image: php:8.4-fpm-alpine
+    container_name: pergunta4-php
+    volumes:
+      - ./php:/var/www/html:ro
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    restart: unless-stopped
+
+  mariadb:
+    image: mariadb:11.8
+    container_name: pergunta4-mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: root_desafio
+      MARIADB_DATABASE: wordpress
+      MARIADB_USER: wordpress
+      MARIADB_PASSWORD: wordpress_desafio
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "healthcheck.sh",
+          "--connect",
+          "--innodb_initialized"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    restart: unless-stopped
+
+volumes:
+  mariadb_data:
