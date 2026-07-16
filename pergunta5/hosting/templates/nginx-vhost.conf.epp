@@ -6,6 +6,7 @@
 | -%>
 # Arquivo gerenciado pelo Puppet.
 # Alterações manuais poderão ser sobrescritas.
+# Virtual Host do cliente gerenciado automaticamente.
 
 server {
     listen 80;

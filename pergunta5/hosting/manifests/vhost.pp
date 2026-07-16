@@ -1,4 +1,5 @@
 # Cria os virtual hosts Nginx e LiteSpeed de um cliente.
+
 define hosting::vhost (
   String                     $domain,
   String                     $system_user,
@@ -52,6 +53,13 @@ define hosting::vhost (
       File[$nginx_available],
       File[$nginx_enabled],
     ],
+  }
+  
+  exec { "reload-nginx-${domain}":
+    command     => '/bin/systemctl reload nginx',
+    path        => ['/usr/sbin', '/usr/bin', '/sbin', '/bin'],
+    refreshonly => true,
+    subscribe   => Exec["validate-nginx-${domain}"],
   }
 
   if $manage_litespeed {
